@@ -2,10 +2,9 @@
 
 An open-source air divider ("flap") for CPAP-based part cooling on 3D printer toolheads. A flap inside the divider, driven by a servo or a stepper, routes the air from a single CPAP blower between outlets.
 
-> **Status: early release.** This first release contains the STL files for the **servo version** only. The stepper version, the source CAD files and the printer macros will follow in later releases.
+> **Status: early release.** Ready-to-print STL files are available for the **servo version**. STEP files are available for the main bodies of both the servo and the stepper version, and for the air hose adapters. STL files for the stepper version and the printer macros will follow in later releases.
 
-<!-- TODO: add a photo or render of the assembled divider -->
-<!-- ![cflap-rework assembled](docs/images/assembly.jpg) -->
+![cflap-rework render](docs/images/render.png)
 
 ## Repository layout
 
@@ -21,7 +20,14 @@ stl/
 └── air hose adapter/       # Hose adapters for the Mellow CPAP
     ├── Mellow_cpap_hose_intake.stl
     └── Mellow_cpap_hose_exhaust_2x.stl
-cad/                        # Source CAD files (coming later)
+cad/
+├── servo/
+│   └── CFLAP.step          # Main body, servo version
+├── stepper/
+│   └── CFLAP.step          # Main body, stepper version
+└── air hose adapter/
+    ├── Mellow_cpap_hose_intake.step
+    └── Mellow_cpap_hose_exhaust_2x.step
 ```
 
 ## Parts to print
@@ -45,6 +51,17 @@ cad/                        # Source CAD files (coming later)
 | `Mellow_cpap_hose_exhaust_2x.stl` | 1   | ABS / ASA | File contains two exhaust adapters      |
 
 <!-- TODO: confirm materials and add recommended print settings (layer height, walls, infill, supports) -->
+
+## CAD files
+
+The `cad/` folder contains STEP files. You can open them in any common CAD program (Fusion, FreeCAD, Onshape, SolidWorks, ...) to modify the design or adapt it to your toolhead.
+
+| File                                                    | Description                       |
+| ------------------------------------------------------- | --------------------------------- |
+| `cad/servo/CFLAP.step`                                  | Main body of the servo version    |
+| `cad/stepper/CFLAP.step`                                | Main body of the stepper version  |
+| `cad/air hose adapter/Mellow_cpap_hose_intake.step`     | Intake hose adapter               |
+| `cad/air hose adapter/Mellow_cpap_hose_exhaust_2x.step` | Exhaust hose adapters (2x)        |
 
 ## Bill of materials
 
@@ -76,14 +93,32 @@ Printer macros for controlling the flap will be published in a later release.
 - [x] STL files for the servo version
 - [ ] STL files for the stepper version
 - [ ] Printer macros
-- [ ] Source CAD files
+- [x] STEP files for the main bodies (servo and stepper)
+- [x] STEP files for the air hose adapters
 - [ ] Assembly guide with pictures
 
 ## Contributing
 
-Issues and pull requests are welcome. If you build one, photos and feedback on fit, sealing and airflow help improve the design.
+Contributions are very welcome! If you made something for the cflap that other users might find useful, please share it with a pull request. For example:
+
+- **Air hose adapters** for other CPAP hoses. Adapters are especially wanted.
+- **Usermods:** your own changes, remixes or add-ons for the cflap.
+- **Anything else related to the cflap**, such as mounts, macros, docs or print profiles.
+
+When you open a pull request, please:
+
+- Include the STL files and, if possible, the STEP files, so others can modify your part.
+- Put air hose adapters in `stl/air hose adapter/` and `cad/air hose adapter/`, and usermods in `usermods/<your-mod-name>/`.
+- Add a short description of what the part is for and what hardware it fits. A photo helps too.
+
+Issues are welcome as well. If you build one, feedback on fit, sealing and airflow helps improve the design.
 
 ## License
 
-<!-- TODO: choose a license, e.g. CERN-OHL-S-2.0 or CC BY-SA 4.0 for hardware, and add a LICENSE file -->
-_License to be added._
+This project is licensed under the [GNU General Public License v3.0](LICENSE). This covers all files in this repository, including the CAD files, the STL files and the macros.
+
+You are free to use, modify and share the design. If you share a modified version, it must also be released under GPL-3.0.
+
+## Credits
+
+This project was inspired by [Flap-controlled-CPAP](https://github.com/vitals78/Flap-controlled-CPAP) by vitals78. cflap-rework is a completely new 3D model and does not reuse any of its files.
